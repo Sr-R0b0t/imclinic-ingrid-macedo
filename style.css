@@ -445,7 +445,9 @@ details p {
   color: #fff;
 }
 
-/* Comparador antes/depois */
+/* Comparador antes/depois
+   Se suas fotos não forem 16:9, mude o aspect-ratio (ex.: 3 / 2 ou 4 / 3)
+   e remova o max-height para a foto não ser cortada além do esperado. */
 .comparador {
   position: relative;
   width: 100%;
@@ -467,24 +469,41 @@ details p {
 .comparador-depois {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-family: var(--fonte-titulo);
-  font-size: 1.5rem;
+  background: var(--cor-areia); /* aparece enquanto a foto carrega */
 }
 
-/* TROCAR: coloque a foto "antes" aqui (background: url(...) center/cover) */
-.comparador-antes {
-  background: linear-gradient(135deg, #5E5651, #7A706A);
+.comparador-antes img,
+.comparador-depois img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* preenche a caixa sem distorcer */
+  object-position: center;  /* ajuste se precisar enquadrar (ex.: center 40%) */
+  pointer-events: none;
+  -webkit-user-drag: none;
 }
 
-/* TROCAR: coloque a foto "depois" aqui. O clip-path é controlado pelo JS. */
+/* A camada "depois" é recortada pelo JS conforme o slider */
 .comparador-depois {
-  background: linear-gradient(135deg, var(--cor-rosa), var(--cor-areia));
-  color: var(--cor-texto);
   clip-path: inset(0 0 0 50%);
+}
+
+/* Etiquetas "Antes" e "Depois" sobre as fotos */
+.comparador-rotulo {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(42, 34, 32, 0.72);
+  color: #fff;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.comparador-depois .comparador-rotulo {
+  right: 16px;
+  left: auto;
 }
 
 /* Linha vertical com a bolinha de arrastar */

@@ -2,6 +2,7 @@
    IM CLINIC — Scripts
    1. Comparador antes/depois
    2. Abas do portfólio
+   3. Revelar ao rolar
    ========================================================== */
 
 /* ---------- 1. COMPARADOR ANTES/DEPOIS ----------
@@ -18,23 +19,56 @@ slider.addEventListener('input', () => {
 
 
 /* ---------- 2. ABAS DO PORTFÓLIO ----------
-   Cada botão guarda "Título|Descrição" no atributo data-caso.
-   Ao clicar, a aba fica ativa e a legenda abaixo do comparador muda.
-   Para trocar a foto também, veja o comentário em style.css (comparador). */
+   Cada botão guarda:
+   - data-caso: "Título|Descrição"
+   - data-antes / data-depois: caminho das duas fotos
+   - data-ajuste-antes / data-ajuste-depois (opcional): ajuste fino do
+     enquadramento, em CSS transform. Ex.: "scale(1.15) translate(-4%, 3%)" */
 const abas = document.querySelectorAll('.portfolio-abas button');
 const tituloCaso = document.getElementById('caso-titulo');
 const descricaoCaso = document.getElementById('caso-descricao');
+const imgAntes = document.getElementById('img-antes');
+const imgDepois = document.getElementById('img-depois');
+
+// Mostra o caso da aba: legenda, fotos, ajuste de enquadramento e slider no meio
+function mostrarCaso(aba) {
+  abas.forEach((outra) => outra.setAttribute('aria-pressed', 'false'));
+  aba.setAttribute('aria-pressed', 'true');
+
+  const [titulo, descricao] = aba.dataset.caso.split('|');
+  tituloCaso.textContent = titulo;
+  descricaoCaso.textContent = descricao;
+
+  imgAntes.src = aba.dataset.antes;
+  imgAntes.alt = 'Antes: ' + titulo;
+  imgDepois.src = aba.dataset.depois;
+  imgDepois.alt = 'Depois: ' + titulo;
+
+  // Ajuste fino do enquadramento (sem atributo = foto sem ajuste)
+  imgAntes.style.transform = aba.dataset.ajusteAntes || 'none';
+  imgDepois.style.transform = aba.dataset.ajusteDepois || 'none';
+
+  // Volta o comparador para o meio
+  slider.value = 50;
+  slider.dispatchEvent(new Event('input'));
+}
 
 abas.forEach((aba) => {
-  aba.addEventListener('click', () => {
-    abas.forEach((outra) => outra.setAttribute('aria-pressed', 'false'));
-    aba.setAttribute('aria-pressed', 'true');
+  // Baixa as fotos da aba quando o mouse passa ou o teclado foca,
+  // para a troca ser instantânea no clique
+  const preCarregar = () => {
+    new Image().src = aba.dataset.antes;
+    new Image().src = aba.dataset.depois;
+  };
+  aba.addEventListener('pointerenter', preCarregar, { once: true });
+  aba.addEventListener('focus', preCarregar, { once: true });
 
-    const [titulo, descricao] = aba.dataset.caso.split('|');
-    tituloCaso.textContent = titulo;
-    descricaoCaso.textContent = descricao;
-  });
+  aba.addEventListener('click', () => mostrarCaso(aba));
 });
+
+// Aplica o caso que já começa ativo (para ele também receber o ajuste)
+const abaInicial = document.querySelector('.portfolio-abas button[aria-pressed="true"]');
+if (abaInicial) mostrarCaso(abaInicial);
 
 
 /* ---------- 3. REVELAR AO ROLAR ----------

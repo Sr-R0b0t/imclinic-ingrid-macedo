@@ -72,8 +72,8 @@
                         <p>Dentes mais claros com segurança e acompanhamento.</p>
                     </details>
                     <details>
-                        <summary>Reabilitação estética</summary>
-                        <p>Plano completo para recuperar forma, função e harmonia.</p>
+                        <summary>Recontorno Estético com Resina</summary>
+                        <p>Técnica que utiliza resina composta para ajustar pequenos detalhes de formato, proporção e contorno dos dentes, valorizando a harmonia e a naturalidade do sorriso.</p>
                     </details>
                 </div>
                 <div>
@@ -83,8 +83,8 @@
                         <p>Avaliação e cuidado das gengivas, a base de qualquer resultado estético.</p>
                     </details>
                     <details>
-                        <summary>Plástica gengival</summary>
-                        <p>Ajusta o desenho da gengiva para um sorriso mais equilibrado.</p>
+                        <summary>Gengivoplastia</summary>
+                        <p>Procedimento periodontal que remodela o contorno da gengiva, proporcionando maior harmonia entre dentes e gengiva e valorizando a estética do sorriso.</p>
                     </details>
                     <details>
                         <summary>Tratamentos periodontais</summary>
@@ -110,29 +110,51 @@
         </div>
     </section>
 
-    <section id="portfolio" class="secao-alt">
+        <section id="portfolio" class="secao-alt">
         <div class="container">
             <h2>Alguns sorrisos <em>que passaram pela IM.</em></h2>
+
+            <!-- Cada botão guarda o texto do caso e as fotos de antes/depois.
+                 Para adicionar um caso novo, copie um botão e troque os dados. -->
             <div class="portfolio-abas" role="group" aria-label="Tipo de caso">
                 <button aria-pressed="true"
-                    data-caso="Facetas em resina|Reanatomização estética, ajuste de proporções e refinamento gengival.">Facetas
-                    em resina</button>
+                    data-caso="Facetas em resina|Reanatomização estética, ajuste de proporções e refinamento gengival."
+                    data-antes="assets/imgs/portfolio/resina-antes.jpg"
+                    data-depois="assets/imgs/portfolio/resina-depois.jpg">Facetas em resina</button>
                 <button aria-pressed="false"
-                    data-caso="Facetas em porcelana|Planejamento digital, forma e cor definidos antes da execução.">Facetas
-                    em porcelana</button>
+                    data-caso="Facetas em porcelana|Planejamento digital, forma e cor definidos antes da execução."
+                    data-antes="assets/imgs/portfolio/porcelana-antes.jpg"
+                    data-depois="assets/imgs/portfolio/porcelana-depois.jpg">Facetas em porcelana</button>
                 <button aria-pressed="false"
-                    data-caso="Recontorno gengival|Harmonização do desenho gengival e da proporção dos dentes.">Recontorno
-                    gengival</button>
+                    data-caso="Recontorno gengival|Harmonização do desenho gengival e da proporção dos dentes."
+                    data-antes="assets/imgs/portfolio/gengiva-antes.jpg"
+                    data-depois="assets/imgs/portfolio/gengiva-depois.jpg">Recontorno gengival</button>
                 <button aria-pressed="false"
-                    data-caso="Clareamento|Tom mais claro mantendo o aspecto natural do esmalte.">Clareamento</button>
+                    data-caso="Clareamento|Tom mais claro mantendo o aspecto natural do esmalte."
+                    data-antes="./assets/imgs/clareamento-antes.jpg"
+                    data-depois="assets/imgs/clareamento-depois.jpg">Clareamento</button>
                 <button aria-pressed="false"
-                    data-caso="Lábios|Preenchimento sutil, com contorno e volume proporcionais.">Lábios</button>
+                    data-caso="Lábios|Preenchimento sutil, com contorno e volume proporcionais."
+                    data-antes="assets/imgs/portfolio/labios-antes.jpg"
+                    data-depois="assets/imgs/portfolio/labios-depois.jpg">Lábios</button>
             </div>
+
+            <!-- As fotos iniciais devem ser as do primeiro botão (o que está ativo) -->
             <div class="comparador">
-                <div class="comparador-antes">Antes</div>
-                <div class="comparador-depois">Depois</div><span class="comparador-linha"></span>
+                <div class="comparador-antes">
+                    <img id="img-antes" src="assets/imgs/portfolio/resina-antes.jpg"
+                        alt="Antes: facetas em resina" loading="lazy" decoding="async">
+                    <span class="comparador-rotulo">Antes</span>
+                </div>
+                <div class="comparador-depois">
+                    <img id="img-depois" src="assets/imgs/portfolio/resina-depois.jpg"
+                        alt="Depois: facetas em resina" loading="lazy" decoding="async">
+                    <span class="comparador-rotulo">Depois</span>
+                </div>
+                <span class="comparador-linha"></span>
                 <input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois">
             </div>
+
             <div class="comparador-legenda"><span><strong id="caso-titulo">Facetas em resina</strong> &nbsp;<span
                         id="caso-descricao">Reanatomização estética, ajuste de proporções e refinamento
                         gengival.</span></span><span>Arraste para comparar</span></div>
