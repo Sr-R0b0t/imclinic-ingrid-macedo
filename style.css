@@ -1,0 +1,770 @@
+/* ==========================================================
+   IM CLINIC — Folha de estilos
+   Índice:
+   1. Variáveis (cores)
+   2. Base (reset, tipografia, links)
+   3. Layout geral e botões
+   4. Navegação
+   5. Hero (primeira tela)
+   6. Sobre
+   7. Tratamentos
+   8. Portfólio (abas + comparador antes/depois)
+   9. Diferenciais
+   10. Por que a IM Clinic
+   11. Depoimentos
+   12. Fotografia clínica
+   13. Final (contato) e rodapé
+   14. Responsivo (celular/tablet)
+   ========================================================== */
+
+
+/* ---------- 1. VARIÁVEIS ----------
+   Para trocar a paleta do site, altere apenas os valores aqui. */
+:root {
+  /* Fontes: Newsreader (títulos, serifada fina) + DM Sans (textos) */
+  --fonte-titulo: Newsreader, Georgia, serif;
+  --fonte-texto: "DM Sans", system-ui, sans-serif;
+
+  --cor-fundo: #F7F3EC;        /* fundo principal (off-white) */
+  --cor-fundo-alt: #EFE8DC;    /* fundo das seções alternadas */
+  --cor-areia: #E0D6C6;        /* bege da referência */
+  --cor-rosa: #C48884;         /* rosa antigo da referência */
+  --cor-terra: #94594F;        /* marrom-rosado: destaque (contraste 5,3:1 no fundo, 5,8:1 com texto branco) */
+  --cor-terra-escura: #7A463E; /* hover dos elementos terra */
+  --cor-texto: #2A2220;        /* texto principal (contraste ~14:1) */
+  --cor-texto-suave: #5F5651;  /* texto secundário (contraste ~6:1) */
+  --cor-linha: #DCD2C3;        /* divisórias decorativas */
+  --cor-borda: #A39688;        /* bordas de botões e abas (visíveis) */
+  --cor-cartao: #FBF8F3;
+
+  /* Respeita as barras do celular (entalhe/barra inferior) */
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+
+/* ---------- 2. BASE ---------- */
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+  /* Evita que o menu fixo cubra o título ao clicar em um link âncora */
+  scroll-padding-top: calc(72px + env(safe-area-inset-top, 0px));
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font: 400 17px/1.7 var(--fonte-texto);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  font-family: var(--fonte-titulo);
+  font-weight: 350;      /* peso fino; aumente (400, 500) para engrossar */
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+/* Trecho em itálico e na cor de destaque dentro dos títulos */
+h1 em,
+h2 em {
+  color: var(--cor-terra);
+  font-style: italic;
+}
+
+h2 {
+  max-width: 18ch;
+  font-size: clamp(2rem, 4.3vw, 3.2rem);
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+p {
+  max-width: 58ch;
+  margin: 0 0 1em;
+}
+
+a {
+  color: inherit;
+}
+
+/* Foco visível para quem navega pelo teclado */
+:focus-visible {
+  outline: 2px solid var(--cor-terra);
+  outline-offset: 3px;
+}
+
+
+/* ---------- 3. LAYOUT GERAL E BOTÕES ---------- */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section {
+  padding: clamp(72px, 11vw, 140px) 0;
+}
+
+.secao-alt {
+  background: var(--cor-fundo-alt);
+}
+
+.botao {
+  display: inline-block;
+  padding: 15px 30px;
+  border-radius: 999px;
+  background: var(--cor-terra);
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background 0.25s, transform 0.25s;
+}
+
+/* Hover: fica escuro com texto branco (contraste ~14:1) */
+.botao:hover,
+.botao:focus-visible {
+  background: var(--cor-texto);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.botao:active {
+  transform: translateY(0);
+}
+
+/* Versão menor do botão (usada no menu) */
+.botao-pequeno {
+  padding: 10px 22px;
+  font-size: 0.9rem;
+}
+
+/* Botão só com contorno (ex.: Instagram) */
+.botao-contorno {
+  background: none;
+  border: 1px solid var(--cor-texto);
+  color: var(--cor-texto);
+}
+
+.botao-contorno:hover,
+.botao-contorno:focus-visible {
+  background: var(--cor-texto);
+  border-color: var(--cor-texto);
+  color: var(--cor-fundo);
+}
+
+
+/* ---------- 4. NAVEGAÇÃO ---------- */
+nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 9;
+  background: color-mix(in srgb, var(--cor-fundo) 88%, transparent);
+  border-bottom: 1px solid var(--cor-linha);
+  backdrop-filter: blur(10px);
+}
+
+nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+nav b {
+  color: var(--cor-terra);
+  font-family: var(--fonte-titulo);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+nav ul {
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.92rem;
+}
+
+nav ul a {
+  padding: 6px 0;
+  border-bottom: 1px solid transparent;
+  color: var(--cor-texto-suave);
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+/* Hover: texto escuro + sublinhado na cor de destaque */
+nav ul a:hover {
+  border-bottom-color: var(--cor-terra);
+  color: var(--cor-texto);
+}
+
+
+/* ---------- 5. HERO (primeira tela) ---------- */
+.hero {
+  padding: clamp(48px, 8vw, 100px) 0 clamp(72px, 10vw, 120px);
+}
+
+.hero .container {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero h1 {
+  max-width: 15ch;
+  font-size: clamp(2.5rem, 5.8vw, 4.5rem);
+}
+
+.hero p {
+  margin: 24px 0 36px;
+  color: var(--cor-texto-suave);
+  font-size: 1.1rem;
+}
+
+/* A logo tem fundo branco: "multiply" faz o branco sumir sobre o off-white */
+.hero-logo {
+  display: block;
+  width: min(300px, 70%);
+  margin: 0 0 28px -8px;
+  mix-blend-mode: multiply;
+}
+
+/* Círculo grande ao lado do texto. Troque a imagem pela foto da Ingrid. */
+.hero-foto {
+  position: relative;
+  aspect-ratio: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  animation: entrada-hero 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.hero-foto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-foto span {
+  position: absolute;
+  inset: auto 0 9% 0;
+  color: #fff;
+  font-size: 0.85rem;
+  text-align: center;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* Entrada da foto */
+@keyframes entrada-hero {
+  from { opacity: 0; transform: scale(0.92) rotate(-6deg); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Entrada do texto: cada item sobe e aparece em sequência.
+   Usa "backwards" (e não "both") para não travar o hover do botão. */
+.hero .container > div:first-child > * {
+  animation: entrada-texto 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+
+.hero .container > div:first-child > :nth-child(1) { animation-delay: 0.1s; }  /* logo */
+.hero .container > div:first-child > :nth-child(2) { animation-delay: 0.25s; } /* título */
+.hero .container > div:first-child > :nth-child(3) { animation-delay: 0.4s; }  /* frase */
+.hero .container > div:first-child > :nth-child(4) { animation-delay: 0.55s; } /* botão */
+
+@keyframes entrada-texto {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Entrada do menu: desce suavemente */
+nav {
+  animation: entrada-menu 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+
+@keyframes entrada-menu {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Quem prefere menos movimento não vê animações */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .botao { transition: none; }
+  .hero-foto,
+  nav,
+  .hero .container > div:first-child > * { animation: none; }
+}
+
+
+/* ---------- 6. SOBRE ---------- */
+.sobre .container {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Espaço reservado para a foto da Ingrid em atendimento */
+.sobre-foto {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 200px 200px 16px 16px;
+  background: var(--cor-areia);
+}
+
+.sobre-foto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* preenche a caixa sem distorcer */
+  object-position: center top; /* mantém o rosto visível no corte */
+}
+.sobre-destaque {
+  max-width: 24ch;
+  margin: 28px 0 24px;
+  font-family: var(--fonte-titulo);
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+
+/* ---------- 7. TRATAMENTOS ---------- */
+.tratamentos-colunas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 56px;
+}
+
+.tratamentos-colunas h3 {
+  margin-bottom: 12px;
+  color: var(--cor-terra);
+}
+
+/* Cada tratamento é um <details> que abre e fecha ao clicar */
+details {
+  padding: 14px 0;
+  border-top: 1px solid var(--cor-linha);
+}
+
+details:last-child {
+  border-bottom: 1px solid var(--cor-linha);
+}
+
+summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+/* Hover: título ganha a cor de destaque */
+summary:hover {
+  color: var(--cor-terra);
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Sinal de "+" que gira e vira "x" quando aberto */
+summary::after {
+  content: "+";
+  color: var(--cor-terra);
+  font-size: 1.4rem;
+  transition: transform 0.3s;
+}
+
+details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+details p {
+  margin: 10px 0 4px;
+  color: var(--cor-texto-suave);
+  font-size: 0.95rem;
+}
+
+
+/* ---------- 8. PORTFÓLIO ---------- */
+.portfolio-abas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 36px 0 28px;
+}
+
+.portfolio-abas button {
+  padding: 9px 20px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 999px;
+  background: none;
+  color: var(--cor-texto);
+  font: inherit;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+/* Hover da aba inativa: borda e texto na cor de destaque */
+.portfolio-abas button:hover {
+  border-color: var(--cor-terra);
+  background: var(--cor-cartao);
+  color: var(--cor-terra-escura);
+}
+
+/* Aba ativa (o JS troca o aria-pressed) */
+.portfolio-abas button[aria-pressed="true"] {
+  background: var(--cor-terra);
+  border-color: var(--cor-terra);
+  color: #fff;
+}
+
+/* A aba ativa não muda no hover */
+.portfolio-abas button[aria-pressed="true"]:hover {
+  background: var(--cor-terra);
+  color: #fff;
+}
+
+/* Comparador antes/depois */
+.comparador {
+  position: relative;
+  width: 100%;
+  max-height: 520px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 20px;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.comparador:focus-within {
+  outline: 2px solid var(--cor-terra);
+  outline-offset: 3px;
+}
+
+/* As duas camadas (antes e depois) ficam uma sobre a outra */
+.comparador-antes,
+.comparador-depois {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: var(--fonte-titulo);
+  font-size: 1.5rem;
+}
+
+/* TROCAR: coloque a foto "antes" aqui (background: url(...) center/cover) */
+.comparador-antes {
+  background: linear-gradient(135deg, #5E5651, #7A706A);
+}
+
+/* TROCAR: coloque a foto "depois" aqui. O clip-path é controlado pelo JS. */
+.comparador-depois {
+  background: linear-gradient(135deg, var(--cor-rosa), var(--cor-areia));
+  color: var(--cor-texto);
+  clip-path: inset(0 0 0 50%);
+}
+
+/* Linha vertical com a bolinha de arrastar */
+.comparador-linha {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: #fff;
+  pointer-events: none;
+}
+
+.comparador-linha::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  margin: -22px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Slider invisível por cima de tudo: é ele que recebe o arrastar */
+.comparador input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+}
+
+.comparador-legenda {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+  color: var(--cor-texto-suave);
+  font-size: 0.95rem;
+}
+
+.comparador-legenda strong {
+  color: var(--cor-texto);
+  font-weight: 500;
+}
+
+
+/* ---------- 9. DIFERENCIAIS ---------- */
+.diferenciais-lista {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 56px;
+}
+
+.diferenciais-lista div {
+  padding: 0 28px;
+  border-left: 1px solid var(--cor-linha);
+}
+
+.diferenciais-lista div:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.diferenciais-lista h3 {
+  margin-bottom: 10px;
+  color: var(--cor-terra);
+  font-size: 1.4rem;
+}
+
+.diferenciais-lista p {
+  color: var(--cor-texto-suave);
+  font-size: 0.95rem;
+}
+
+
+/* ---------- 10. POR QUE A IM CLINIC ---------- */
+.por-que {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.por-que ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.por-que li {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--cor-linha);
+}
+
+
+/* ---------- 11. DEPOIMENTOS ---------- */
+.depoimentos-lista {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 56px;
+}
+
+.depoimentos-lista blockquote {
+  margin: 0;
+  padding: 30px;
+  border: 1px solid var(--cor-linha);
+  border-radius: 6px 40px 6px 40px;
+  background: var(--cor-cartao);
+}
+
+.depoimentos-lista blockquote p {
+  font-family: var(--fonte-titulo);
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.depoimentos-lista cite {
+  color: var(--cor-texto-suave);
+  font-size: 0.9rem;
+  font-style: normal;
+}
+
+
+/* ---------- 12. FOTOGRAFIA CLÍNICA ----------
+   Grade de 6 colunas. Ordem das fotos no HTML:
+   1 frontal | 2 lateral | 3 faceta | 4 textura | 5 gengiva | 6 antes/depois */
+.fotografia-grade {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 150px;
+  gap: 14px;
+  margin-top: 56px;
+}
+
+.fotografia-grade div {
+  display: flex;
+  align-items: flex-end;
+  padding: 14px;
+  border-radius: 14px;
+  background: linear-gradient(140deg, var(--cor-areia), var(--cor-rosa));
+  color: var(--cor-texto);
+  font-size: 0.85rem;
+}
+
+.fotografia-grade div:nth-child(1) { grid-column: span 3; grid-row: span 2; }
+.fotografia-grade div:nth-child(2) { grid-column: span 3; }
+.fotografia-grade div:nth-child(3) { grid-column: span 2; }
+.fotografia-grade div:nth-child(4) { grid-column: span 1; }
+.fotografia-grade div:nth-child(5) { grid-column: span 3; }
+.fotografia-grade div:nth-child(6) { grid-column: span 3; }
+
+
+/* ---------- 13. FINAL (CONTATO) E RODAPÉ ---------- */
+.final {
+  padding: clamp(100px, 14vw, 180px) 0;
+  text-align: center;
+}
+
+.final h2 {
+  max-width: 16ch;
+  margin: 0 auto 20px;
+}
+
+.final p {
+  margin: 0 auto 36px;
+  color: var(--cor-texto-suave);
+}
+
+.final-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+
+footer {
+  padding: 28px 0;
+  border-top: 1px solid var(--cor-linha);
+  color: var(--cor-texto-suave);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+
+/* ---------- 14. RESPONSIVO (até 860px de largura) ---------- */
+@media (max-width: 860px) {
+  /* Menu some no celular (só fica o botão Agendar) */
+  nav ul {
+    display: none;
+  }
+
+  /* Duas colunas viram uma */
+  .hero .container,
+  .sobre .container,
+  .por-que {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* Hero centralizado no celular */
+  .hero {
+    text-align: center;
+  }
+
+  .hero-foto {
+    order: -1;            /* foto aparece antes do texto */
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .hero-logo {
+    margin: 0 auto 28px;  /* remove o recuo à esquerda e centraliza */
+  }
+
+  .hero h1,
+  .hero p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sobre-foto {
+    max-width: 320px;
+  }
+
+  .tratamentos-colunas,
+  .depoimentos-lista {
+    grid-template-columns: 1fr;
+  }
+
+  .diferenciais-lista {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 0;
+  }
+
+  .diferenciais-lista div:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  /* Fotografia: 2 colunas, a primeira foto ocupa a largura toda */
+  .fotografia-grade {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 130px;
+  }
+
+  .fotografia-grade div:nth-child(n+2) { grid-column: span 1; }
+  .fotografia-grade div:nth-child(1)   { grid-column: span 2; grid-row: span 2; }
+}
+
+
+/* ---------- 15. REVELAR AO ROLAR ----------
+   O JS adiciona .revelar nos elementos e .visivel quando eles
+   entram na tela. Para mudar o efeito, ajuste a distância (28px),
+   a duração (0.8s) ou o tipo de movimento (translateY). */
+.revelar {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--atraso, 0s);
+}
+
+.revelar.visivel {
+  opacity: 1;
+  transform: none;
+}
+
+/* Quem prefere menos movimento vê tudo direto, sem animação */
+@media (prefers-reduced-motion: reduce) {
+  .revelar {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

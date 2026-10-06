@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>IM Clinic | Ingrid Macedo, Cirurgiã-Dentista</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="container"><b>IM CLINIC</b>
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#tratamentos">Tratamentos</a></li>
+                <li><a href="#portfolio">Portfólio</a></li>
+                <li><a href="#diferenciais">Diferenciais</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <a class="botao botao-pequeno" href="#contato">Agendar</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div>
+                <img class="hero-logo" src="assets/imgs/logo2.png" alt="IM Clinic, odontologia estética">
+                <h1>Odontologia estética com <em>naturalidade, precisão e propósito.</em></h1>
+                <p>Ingrid Macedo, cirurgiã-dentista, com especialização em periodontia.</p>
+                <a class="botao" href="#contato">Agende sua avaliação</a>
+            </div>
+            <div class="hero-foto"><img src="assets/imgs/ingrid-principal-sem-fundo2.png"
+                    alt="banner principal"><span></span></div>
+        </div>
+    </header>
+
+    <section id="sobre" class="sobre secao-alt">
+        <div class="container">
+            <div class="sobre-foto">
+                <img src="./assets/imgs/atendimento.png" alt="Ingrid Macedo atendendo uma paciente">
+            </div>
+            <div>
+                <h2>Um espaço criado para transformar sorrisos <em>sem transformar quem você é.</em></h2>
+                <p class="sobre-destaque">Planejar vem antes de executar.</p>
+                <p>Sou Ingrid Macedo, cirurgiã-dentista especializada em periodontia. Acredito que um sorriso bonito
+                    nasce de gengivas saudáveis, proporção e respeito ao rosto de cada paciente. Aqui cada caso é
+                    estudado individualmente antes de qualquer procedimento.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tratamentos">
+        <div class="container">
+            <h2>Tratamentos pensados <em>para cada sorriso</em></h2>
+            <div class="tratamentos-colunas">
+                <div>
+                    <h3>Estética dental</h3>
+                    <details>
+                        <summary>Facetas em resina</summary>
+                        <p>Reanatomização do sorriso com resina, em geral numa única etapa e com mínimo desgaste.</p>
+                    </details>
+                    <details>
+                        <summary>Facetas em porcelana</summary>
+                        <p>Lâminas finas e duradouras para mudanças de forma, cor e alinhamento.</p>
+                    </details>
+                    <details>
+                        <summary>Clareamento</summary>
+                        <p>Dentes mais claros com segurança e acompanhamento.</p>
+                    </details>
+                    <details>
+                        <summary>Reabilitação estética</summary>
+                        <p>Plano completo para recuperar forma, função e harmonia.</p>
+                    </details>
+                </div>
+                <div>
+                    <h3>Periodontia</h3>
+                    <details>
+                        <summary>Saúde gengival</summary>
+                        <p>Avaliação e cuidado das gengivas, a base de qualquer resultado estético.</p>
+                    </details>
+                    <details>
+                        <summary>Plástica gengival</summary>
+                        <p>Ajusta o desenho da gengiva para um sorriso mais equilibrado.</p>
+                    </details>
+                    <details>
+                        <summary>Tratamentos periodontais</summary>
+                        <p>Controle e tratamento de inflamações e perda de suporte dos dentes.</p>
+                    </details>
+                </div>
+                <div>
+                    <h3>Harmonização facial</h3>
+                    <details>
+                        <summary>Preenchimento labial</summary>
+                        <p>Volume e contorno discretos, em harmonia com o sorriso.</p>
+                    </details>
+                    <details>
+                        <summary>Botox</summary>
+                        <p>Suaviza linhas de expressão preservando a naturalidade.</p>
+                    </details>
+                    <details>
+                        <summary>Procedimentos faciais</summary>
+                        <p>Indicados após avaliação individual do rosto.</p>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="secao-alt">
+        <div class="container">
+            <h2>Alguns sorrisos <em>que passaram pela IM.</em></h2>
+            <div class="portfolio-abas" role="group" aria-label="Tipo de caso">
+                <button aria-pressed="true"
+                    data-caso="Facetas em resina|Reanatomização estética, ajuste de proporções e refinamento gengival.">Facetas
+                    em resina</button>
+                <button aria-pressed="false"
+                    data-caso="Facetas em porcelana|Planejamento digital, forma e cor definidos antes da execução.">Facetas
+                    em porcelana</button>
+                <button aria-pressed="false"
+                    data-caso="Recontorno gengival|Harmonização do desenho gengival e da proporção dos dentes.">Recontorno
+                    gengival</button>
+                <button aria-pressed="false"
+                    data-caso="Clareamento|Tom mais claro mantendo o aspecto natural do esmalte.">Clareamento</button>
+                <button aria-pressed="false"
+                    data-caso="Lábios|Preenchimento sutil, com contorno e volume proporcionais.">Lábios</button>
+            </div>
+            <div class="comparador">
+                <div class="comparador-antes">Antes</div>
+                <div class="comparador-depois">Depois</div><span class="comparador-linha"></span>
+                <input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois">
+            </div>
+            <div class="comparador-legenda"><span><strong id="caso-titulo">Facetas em resina</strong> &nbsp;<span
+                        id="caso-descricao">Reanatomização estética, ajuste de proporções e refinamento
+                        gengival.</span></span><span>Arraste para comparar</span></div>
+        </div>
+    </section>
+
+    <section id="diferenciais">
+        <div class="container">
+            <h2>Estética começa <em>pelo planejamento.</em></h2>
+            <div class="diferenciais-lista">
+                <div>
+                    <h3>Naturalidade</h3>
+                    <p>Resultados que respeitam as características individuais.</p>
+                </div>
+                <div>
+                    <h3>Saúde periodontal</h3>
+                    <p>A estética não é separada da saúde gengival.</p>
+                </div>
+                <div>
+                    <h3>Planejamento</h3>
+                    <p>Cada caso é analisado individualmente antes da execução.</p>
+                </div>
+                <div>
+                    <h3>Precisão</h3>
+                    <p>Forma, textura, proporção e acabamento fazem parte do resultado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="secao-alt">
+        <div class="container por-que">
+            <h2>Um atendimento pensado <em>nos detalhes.</em></h2>
+            <ul>
+                <li>Atendimento individualizado</li>
+                <li>Planejamento personalizado</li>
+                <li>Fotografia clínica</li>
+                <li>Ambiente reservado</li>
+                <li>Acompanhamento pós-procedimento</li>
+                <li>Materiais e técnicas selecionados</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>Quem viveu <em>a experiência IM</em></h2>
+            <div class="depoimentos-lista">
+                <blockquote>
+                    <p>“Depoimento da paciente aparece aqui, em poucas linhas.”</p><cite>Primeiro nome</cite>
+                </blockquote>
+                <blockquote>
+                    <p>“Use prints reais, com autorização da paciente.”</p><cite>Primeiro nome</cite>
+                </blockquote>
+                <blockquote>
+                    <p>“Frases curtas passam mais confiança.”</p><cite>Primeiro nome</cite>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <section class="secao-alt">
+        <div class="container">
+            <h2>Cada detalhe <em>importa.</em></h2>
+            <div class="fotografia-grade">
+                <div>Sorriso frontal</div>
+                <div>Lateral</div>
+                <div>Close de faceta</div>
+                <div>Textura</div>
+                <div>Gengiva</div>
+                <div>Antes e depois</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="final">
+        <div class="container">
+            <h2>Seu sorriso merece um planejamento <em>à altura.</em></h2>
+            <p>Agende sua avaliação na IM Clinic.<br>Itaim Paulista, São Paulo</p>
+            <div class="final-botoes">
+                <a class="botao" href="https://wa.me/5511958943349?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20IM%20Clinic%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener" aria-label="Falar com a IM Clinic pelo WhatsApp">Falar no
+                    WhatsApp</a>
+                    <a class="botao botao-contorno" href="https://www.instagram.com/i.mclinic?stkn=MTU0dWdmcnBsNGMxYQ%3D%3D&utm_source=qr" aria-label="Instagram">Ver o Instagram</a>
+            </div>
+        </div>
+    </section>
+    <footer>IM Clinic · Ingrid Macedo, Cirurgiã-Dentista</footer>
+
+    <script src="script.js"></script>
+</body>F
+
+</html>
