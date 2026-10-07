@@ -83,7 +83,7 @@ const gruposRevelar = [
   { alvo: '.diferenciais-lista > div', passo: 0.12 },
   { alvo: '.por-que ul', passo: 0 },
   { alvo: '.depoimentos-lista > blockquote', passo: 0.15 },
-  { alvo: '.fotografia-grade > div', passo: 0.08 },
+  { alvo: '.fotografia-grade > figure', passo: 0.08 },
   { alvo: '.final .container > p, .final-botoes', passo: 0.1 },
 ];
 
