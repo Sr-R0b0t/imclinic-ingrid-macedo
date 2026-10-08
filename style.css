@@ -417,6 +417,47 @@ details img {
   object-position: center;      /* ajuste o enquadramento (ex.: center 30%) */
 }
 
+
+/* Clareamento: tipos + vídeo de modo de uso */
+.clareamento-tipos {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--cor-texto-suave);
+  font-size: 0.95rem;
+}
+
+.clareamento-tipos li {
+  padding: 10px 0;
+  border-top: 1px solid var(--cor-linha);
+}
+
+.clareamento-tipos strong {
+  display: block;
+  color: var(--cor-texto);
+  font-weight: 500;
+}
+
+.clareamento-video {
+  margin-top: 18px;
+}
+
+.clareamento-video .video-titulo {
+  margin: 0 0 8px;
+  color: var(--cor-texto);
+  font-weight: 500;
+}
+
+.clareamento-video video {
+  display: block;
+  width: 100%;
+  max-height: 420px;          /* evita que vídeo vertical ocupe a tela toda */
+  border-radius: 12px;
+  background: var(--cor-texto);
+  object-fit: contain;        /* mostra o vídeo inteiro, sem cortar */
+}
+
+
 /* Texto e imagem entram suavemente quando o item abre */
 details[open] > :not(summary) {
   animation: abrir-detalhe 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
