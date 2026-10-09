@@ -112,3 +112,67 @@ if ('IntersectionObserver' in window && !reduzirMovimento) {
     });
   });
 }
+
+
+
+/* ---------- 4. CARROSSEL DE FEEDBACKS ----------
+   Passa sozinho a cada 4,5 s. Pausa com mouse ou foco do teclado em cima,
+   para de vez se a pessoa tocar na tela ou clicar nas setas, e só anda
+   quando está visível na tela. Sem movimento para quem prefere menos animação. */
+const feedbacks = document.querySelector('.feedbacks');
+const trilho = document.querySelector('.feedbacks-trilho');
+
+if (feedbacks && trilho) {
+  const cartoes = Array.from(trilho.children);
+  const setas = feedbacks.querySelectorAll('.feedbacks-seta');
+  const intervalo = 4500; // tempo entre os prints, em milissegundos
+
+  let pausado = false;
+  let parado = false;
+  let visivel = false;
+
+  // Índice do print que está mais alinhado à esquerda agora
+  const atual = () => {
+    let melhor = 0;
+    let menor = Infinity;
+    cartoes.forEach((cartao, i) => {
+      const distancia = Math.abs(cartao.offsetLeft - trilho.scrollLeft);
+      if (distancia < menor) { menor = distancia; melhor = i; }
+    });
+    return melhor;
+  };
+
+  const irPara = (i) => trilho.scrollTo({ left: cartoes[i].offsetLeft, behavior: 'smooth' });
+  const noFim = () => trilho.scrollLeft + trilho.clientWidth >= trilho.scrollWidth - 4;
+
+  // dir = 1 avança, dir = -1 volta; no fim ou no começo dá a volta
+  const mover = (dir) => {
+    if (dir > 0 && noFim()) return irPara(0);
+    if (dir < 0 && trilho.scrollLeft <= 4) return irPara(cartoes.length - 1);
+    irPara(Math.max(0, Math.min(cartoes.length - 1, atual() + dir)));
+  };
+
+  setas.forEach((seta) => {
+    seta.addEventListener('click', () => {
+      parado = true; // quem clica nas setas quer controlar sozinho
+      mover(Number(seta.dataset.dir));
+    });
+  });
+
+  if (!reduzirMovimento) {
+    setInterval(() => {
+      if (!pausado && !parado && visivel && !document.hidden) mover(1);
+    }, intervalo);
+
+    feedbacks.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') pausado = true; });
+    feedbacks.addEventListener('pointerleave', () => { pausado = false; });
+    feedbacks.addEventListener('focusin', () => { pausado = true; });
+    feedbacks.addEventListener('focusout', () => { pausado = false; });
+    trilho.addEventListener('touchstart', () => { parado = true; }, { passive: true });
+
+    new IntersectionObserver(
+      ([entrada]) => { visivel = entrada.isIntersecting; },
+      { threshold: 0.4 }
+    ).observe(trilho);
+  }
+}

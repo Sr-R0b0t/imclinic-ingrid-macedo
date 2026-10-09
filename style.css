@@ -335,7 +335,8 @@ nav {
   width: 100%;
   height: 100%;
   object-fit: cover;          /* preenche a caixa sem distorcer */
-  object-position: center top; /* mantém o rosto visível no corte */
+  object-position:  45px 40px; /* mantém o rosto visível no corte */
+  transform: scale(1.4);
 }
 .sobre-destaque {
   max-width: 24ch;
@@ -668,32 +669,85 @@ details[open] > :not(summary) {
 }
 
 
-/* ---------- 11. DEPOIMENTOS ---------- */
-.depoimentos-lista {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+/* ---------- 11. DEPOIMENTOS (carrossel de prints) ---------- */
+.feedbacks {
   margin-top: 56px;
 }
 
-.depoimentos-lista blockquote {
+/* Faixa que rola na horizontal e "encaixa" em cada print */
+.feedbacks-trilho {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  padding: 4px 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.feedbacks-trilho::-webkit-scrollbar {
+  display: none;
+}
+
+/* Todos os cartões têm o mesmo tamanho (proporção 9:16).
+   Para uma caixa mais larga, mude para 3 / 4 ou 4 / 5. */
+/* Cartão largo e baixo, igual para todos, com moldura clara.
+   O print aparece inteiro dentro dele. */
+.feedback {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(280px, 82vw, 380px);
+  height: clamp(210px, 52vw, 250px);
   margin: 0;
-  padding: 30px;
+  padding: 16px;
   border: 1px solid var(--cor-linha);
-  border-radius: 6px 40px 6px 40px;
+  border-radius: 20px;
   background: var(--cor-cartao);
+  scroll-snap-align: start;
 }
 
-.depoimentos-lista blockquote p {
-  font-family: var(--fonte-titulo);
+/* O print ocupa a largura do cartão, sem cortar nada */
+.feedback img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 100%;       /* se algum print for mais alto, ele encolhe para caber */
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.feedbacks-controles {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.feedbacks-seta {
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 50%;
+  background: none;
+  color: var(--cor-texto);
+  font: inherit;
   font-size: 1.2rem;
-  line-height: 1.4;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
 
-.depoimentos-lista cite {
-  color: var(--cor-texto-suave);
-  font-size: 0.9rem;
-  font-style: normal;
+.feedbacks-seta:hover {
+  border-color: var(--cor-terra);
+  background: var(--cor-cartao);
+  color: var(--cor-terra-escura);
+}
+
+/* Quem prefere menos movimento: sem rolagem suave nem transição */
+@media (prefers-reduced-motion: reduce) {
+  .feedbacks-trilho { scroll-behavior: auto; }
+  .feedbacks-seta { transition: none; }
 }
 
 
@@ -826,8 +880,7 @@ footer {
     max-width: 320px;
   }
 
-  .tratamentos-colunas,
-  .depoimentos-lista {
+  .tratamentos-colunas {
     grid-template-columns: 1fr;
   }
 
