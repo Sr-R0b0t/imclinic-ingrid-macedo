@@ -25,16 +25,26 @@
   --fonte-titulo: Newsreader, Georgia, serif;
   --fonte-texto: "DM Sans", system-ui, sans-serif;
 
-  --cor-fundo: #F7F3EC;        /* fundo principal (off-white) */
-  --cor-fundo-alt: #EFE8DC;    /* fundo das seções alternadas */
-  --cor-areia: #E0D6C6;        /* bege da referência */
-  --cor-rosa: #C48884;         /* rosa antigo da referência */
-  --cor-terra: #94594F;        /* marrom-rosado: destaque (contraste 5,3:1 no fundo, 5,8:1 com texto branco) */
-  --cor-terra-escura: #7A463E; /* hover dos elementos terra */
-  --cor-texto: #2A2220;        /* texto principal (contraste ~14:1) */
-  --cor-texto-suave: #5F5651;  /* texto secundário (contraste ~6:1) */
-  --cor-linha: #DCD2C3;        /* divisórias decorativas */
-  --cor-borda: #A39688;        /* bordas de botões e abas (visíveis) */
+  --cor-fundo: #F7F3EC;
+  /* fundo principal (off-white) */
+  --cor-fundo-alt: #EFE8DC;
+  /* fundo das seções alternadas */
+  --cor-areia: #E0D6C6;
+  /* bege da referência */
+  --cor-rosa: #C48884;
+  /* rosa antigo da referência */
+  --cor-terra: #94594F;
+  /* marrom-rosado: destaque (contraste 5,3:1 no fundo, 5,8:1 com texto branco) */
+  --cor-terra-escura: #7A463E;
+  /* hover dos elementos terra */
+  --cor-texto: #2A2220;
+  /* texto principal (contraste ~14:1) */
+  --cor-texto-suave: #5F5651;
+  /* texto secundário (contraste ~6:1) */
+  --cor-linha: #DCD2C3;
+  /* divisórias decorativas */
+  --cor-borda: #A39688;
+  /* bordas de botões e abas (visíveis) */
   --cor-cartao: #FBF8F3;
 
   /* Respeita as barras do celular (entalhe/barra inferior) */
@@ -66,10 +76,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin: 0;
   font-family: var(--fonte-titulo);
-  font-weight: 350;      /* peso fino; aumente (400, 500) para engrossar */
+  font-weight: 350;
+  /* peso fino; aumente (400, 500) para engrossar */
   line-height: 1.1;
   letter-spacing: -0.015em;
 }
@@ -273,24 +286,54 @@ nav ul a:hover {
 
 /* Entrada da foto */
 @keyframes entrada-hero {
-  from { opacity: 0; transform: scale(0.92) rotate(-6deg); }
-  to   { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: scale(0.92) rotate(-6deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* Entrada do texto: cada item sobe e aparece em sequência.
    Usa "backwards" (e não "both") para não travar o hover do botão. */
-.hero .container > div:first-child > * {
+.hero .container>div:first-child>* {
   animation: entrada-texto 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
 }
 
-.hero .container > div:first-child > :nth-child(1) { animation-delay: 0.1s; }  /* logo */
-.hero .container > div:first-child > :nth-child(2) { animation-delay: 0.25s; } /* título */
-.hero .container > div:first-child > :nth-child(3) { animation-delay: 0.4s; }  /* frase */
-.hero .container > div:first-child > :nth-child(4) { animation-delay: 0.55s; } /* botão */
+.hero .container>div:first-child> :nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+/* logo */
+.hero .container>div:first-child> :nth-child(2) {
+  animation-delay: 0.25s;
+}
+
+/* título */
+.hero .container>div:first-child> :nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* frase */
+.hero .container>div:first-child> :nth-child(4) {
+  animation-delay: 0.55s;
+}
+
+/* botão */
 
 @keyframes entrada-texto {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* Entrada do menu: desce suavemente */
@@ -299,18 +342,33 @@ nav {
 }
 
 @keyframes entrada-menu {
-  from { opacity: 0; transform: translateY(-12px); }
-  to   { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* Quem prefere menos movimento não vê animações */
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .botao { transition: none; }
+  html {
+    scroll-behavior: auto;
+  }
+
+  .botao {
+    transition: none;
+  }
+
   .hero-foto,
   nav,
-  details[open] > :not(summary),
-  .hero .container > div:first-child > * { animation: none; }
+  details[open]> :not(summary),
+  .hero .container>div:first-child>* {
+    animation: none;
+  }
 }
 
 
@@ -334,10 +392,13 @@ nav {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;          /* preenche a caixa sem distorcer */
-  object-position:  45px 40px; /* mantém o rosto visível no corte */
+  object-fit: cover;
+  /* preenche a caixa sem distorcer */
+  object-position: 45px 40px;
+  /* mantém o rosto visível no corte */
   transform: scale(1.4);
 }
+
 .sobre-destaque {
   max-width: 24ch;
   margin: 28px 0 24px;
@@ -410,12 +471,16 @@ details p {
 details img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;          /* mude para 1 / 1 ou 3 / 2 se preferir */
+  aspect-ratio: 4 / 3;
+  /* mude para 1 / 1 ou 3 / 2 se preferir */
   margin: 14px 0 6px;
   border-radius: 12px;
-  background: var(--cor-areia); /* aparece enquanto a foto carrega */
-  object-fit: cover;            /* preenche sem distorcer */
-  object-position: center;      /* ajuste o enquadramento (ex.: center 30%) */
+  background: var(--cor-areia);
+  /* aparece enquanto a foto carrega */
+  object-fit: cover;
+  /* preenche sem distorcer */
+  object-position: center;
+  /* ajuste o enquadramento (ex.: center 30%) */
 }
 
 
@@ -452,21 +517,30 @@ details img {
 .clareamento-video video {
   display: block;
   width: 100%;
-  max-height: 420px;          /* evita que vídeo vertical ocupe a tela toda */
+  max-height: 420px;
+  /* evita que vídeo vertical ocupe a tela toda */
   border-radius: 12px;
   background: var(--cor-texto);
-  object-fit: contain;        /* mostra o vídeo inteiro, sem cortar */
+  object-fit: contain;
+  /* mostra o vídeo inteiro, sem cortar */
 }
 
 
 /* Texto e imagem entram suavemente quando o item abre */
-details[open] > :not(summary) {
+details[open]> :not(summary) {
   animation: abrir-detalhe 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
 }
 
 @keyframes abrir-detalhe {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 
@@ -534,7 +608,8 @@ details[open] > :not(summary) {
 .comparador-depois {
   position: absolute;
   inset: 0;
-  background: var(--cor-areia); /* aparece enquanto a foto carrega */
+  background: var(--cor-areia);
+  /* aparece enquanto a foto carrega */
 }
 
 .comparador-antes img,
@@ -542,8 +617,10 @@ details[open] > :not(summary) {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;        /* preenche a caixa sem distorcer */
-  object-position: center;  /* ajuste se precisar enquadrar (ex.: center 40%) */
+  object-fit: cover;
+  /* preenche a caixa sem distorcer */
+  object-position: center;
+  /* ajuste se precisar enquadrar (ex.: center 40%) */
   pointer-events: none;
   -webkit-user-drag: none;
 }
@@ -714,7 +791,8 @@ details[open] > :not(summary) {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 100%;       /* se algum print for mais alto, ele encolhe para caber */
+  max-height: 100%;
+  /* se algum print for mais alto, ele encolhe para caber */
   border-radius: 12px;
   object-fit: contain;
 }
@@ -746,8 +824,13 @@ details[open] > :not(summary) {
 
 /* Quem prefere menos movimento: sem rolagem suave nem transição */
 @media (prefers-reduced-motion: reduce) {
-  .feedbacks-trilho { scroll-behavior: auto; }
-  .feedbacks-seta { transition: none; }
+  .feedbacks-trilho {
+    scroll-behavior: auto;
+  }
+
+  .feedbacks-seta {
+    transition: none;
+  }
 }
 
 
@@ -774,8 +857,10 @@ details[open] > :not(summary) {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;          /* preenche sem distorcer */
-  object-position: center;    /* ajuste o enquadramento aqui (ex.: center 30%) */
+  object-fit: cover;
+  /* preenche sem distorcer */
+  object-position: center;
+  /* ajuste o enquadramento aqui (ex.: center 30%) */
   transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
@@ -796,14 +881,35 @@ details[open] > :not(summary) {
   letter-spacing: 0.02em;
 }
 
-.fotografia-grade figure:nth-child(1) { grid-column: span 3; grid-row: span 2; }
-.fotografia-grade figure:nth-child(2) { grid-column: span 3; grid-row: span 2; }
-.fotografia-grade figure:nth-child(3) { grid-column: span 2; grid-row: span 2; }
-.fotografia-grade figure:nth-child(4) { grid-column: span 1; grid-row: span 2; }
-.fotografia-grade figure:nth-child(5) { grid-column: span 3; grid-row: span 2; }
+.fotografia-grade figure:nth-child(1) {
+  grid-column: span 3;
+  grid-row: span 2;
+}
+
+.fotografia-grade figure:nth-child(2) {
+  grid-column: span 3;
+  grid-row: span 2;
+}
+
+.fotografia-grade figure:nth-child(3) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.fotografia-grade figure:nth-child(4) {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.fotografia-grade figure:nth-child(5) {
+  grid-column: span 3;
+  grid-row: span 2;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .fotografia-grade img { transition: none; }
+  .fotografia-grade img {
+    transition: none;
+  }
 }
 
 
@@ -830,6 +936,51 @@ details[open] > :not(summary) {
   justify-content: center;
 }
 
+/* Endereço + mapa */
+.local {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 48px;
+  align-items: stretch;
+  margin-top: 80px;
+  text-align: left;
+}
+
+.local-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.local-info h3 {
+  margin-bottom: 16px;
+  color: var(--cor-terra);
+}
+
+.local-info address {
+  margin-bottom: 28px;
+  color: var(--cor-texto-suave);
+  font-style: normal;
+}
+
+.local-mapa {
+  min-height: 320px;
+  overflow: hidden;
+  border: 1px solid var(--cor-linha);
+  border-radius: 20px;
+  background: var(--cor-areia);
+  /* aparece enquanto o mapa carrega */
+}
+
+.local-mapa iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  border: 0;
+}
+
 footer {
   padding: 28px 0;
   border-top: 1px solid var(--cor-linha);
@@ -841,6 +992,7 @@ footer {
 
 /* ---------- 14. RESPONSIVO (até 860px de largura) ---------- */
 @media (max-width: 860px) {
+
   /* Menu some no celular (só fica o botão Agendar) */
   nav ul {
     display: none;
@@ -860,14 +1012,16 @@ footer {
   }
 
   .hero-foto {
-    order: -1;            /* foto aparece antes do texto */
+    order: -1;
+    /* foto aparece antes do texto */
     width: 100%;
     max-width: 420px;
     margin: 0 auto;
   }
 
   .hero-logo {
-    margin: 0 auto 28px;  /* remove o recuo à esquerda e centraliza */
+    margin: 0 auto 28px;
+    /* remove o recuo à esquerda e centraliza */
   }
 
   .hero h1,
@@ -900,8 +1054,26 @@ footer {
     grid-auto-rows: 130px;
   }
 
-    .fotografia-grade figure:nth-child(n+2) { grid-column: span 1; }
-    .fotografia-grade figure:nth-child(1)   { grid-column: span 2; grid-row: span 2; }
+  .fotografia-grade figure:nth-child(n+2) {
+    grid-column: span 1;
+  }
+
+  .fotografia-grade figure:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+
+  .local {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .local-info{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 
