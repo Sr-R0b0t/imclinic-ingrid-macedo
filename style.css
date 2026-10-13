@@ -989,6 +989,32 @@ footer {
   text-align: center;
 }
 
+/* Os parágrafos do rodapé não herdam a largura máxima nem a margem do site */
+footer p {
+  max-width: none;
+  margin: 0;
+}
+
+/* Crédito do desenvolvedor */
+footer .creditos {
+  margin-top: 6px;
+  font-size: 0.82rem;
+}
+
+footer .creditos a {
+  text-decoration: underline;
+  text-decoration-color: var(--cor-borda);
+  text-underline-offset: 3px;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+
+/* Hover e foco: ganha a cor de destaque do site */
+footer .creditos a:hover,
+footer .creditos a:focus-visible {
+  color: var(--cor-terra);
+  text-decoration-color: var(--cor-terra);
+}
+
 
 /* ---------- 14. RESPONSIVO (até 860px de largura) ---------- */
 @media (max-width: 860px) {
